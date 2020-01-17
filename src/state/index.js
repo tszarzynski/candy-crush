@@ -7,6 +7,7 @@ export const Actions = {
 const availableColors = ["red", "green", "blue", "yellow"];
 const gridSize = 10;
 
+// creates grid filled with random colour values
 const makeGrid = (gridSize, availableColors) =>
   Array.from(
     { length: gridSize * gridSize },
@@ -23,6 +24,7 @@ export const reducer = (state, action) => {
     case Actions.FIND_NEIGHBOURS:
       const { index } = action.payload;
 
+      // find neighbours of clicked item
       const neighbours = findNeighbours(state.grid, gridSize, index);
 
       // no neighbours
@@ -30,6 +32,7 @@ export const reducer = (state, action) => {
         return state;
       }
 
+      // perform items dropping
       const newGrid = dropItems(state.grid, gridSize, neighbours);
 
       // check if grid is empty or no more blocks can be removed

@@ -80,7 +80,7 @@ export function dropItems(grid, gridSize, itemsToRemove) {
 
   columnsToDrop.forEach((col, colIndex) => {
     if (!col) return;
-    // find all elements in the column that are not to be deleted
+    // find all elements in the column that are not to be removed
     const column = grid.filter(
       (gridItem, i) =>
         i % gridSize === colIndex && itemsToRemove.indexOf(i) === -1
