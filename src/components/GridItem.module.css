@@ -1,31 +1,29 @@
 .btn {
-    background: white;
-    border: 0;
-    
-    width: 100%;
-    height: 0;
-    display: block;
-    padding-bottom: 100%;
-
-    transition: background 0.2s;
+  background: white;
+  border: 0;
+  display: block;
+  height: 0;
+  padding-bottom: 100%;
+  transition: background 0.2s;
+  width: 100%;
 }
 
 .btn:not(:disabled) {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .red {
-    background: red;
+  background: red;
 }
 
 .yellow {
-    background: yellow;
+  background: yellow;
 }
 
 .blue {
-    background: blue;
+  background: blue;
 }
 
 .green {
-    background: green;
+  background: green;
 }
