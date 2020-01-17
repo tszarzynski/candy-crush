@@ -19,7 +19,6 @@ export function findNeighbours(grid, index) {
     // add clicked point to the candidates list
     candidates.push(point)
 
-
     while (candidates.length > 0) {
         point = candidates.pop();
         pointIndex = getIndexFromCoords10(point)
@@ -63,49 +62,30 @@ export function findNeighbours(grid, index) {
     return matches;
 }
 
-export function calcFall(grid, matches) {
-    const fall = matches.reduce((acc, i) => {
+export function dropItems(grid, itemsToRemove) {
+    let newGrid = [...grid];
 
+    const columnsToDrop = itemsToRemove.reduce((acc, i) => {
         const point = getCoordsFromIndex10(i)
-        console.log(point)
-        if (acc[point.x]) {
-            acc[point.x] = { count: acc[point.x].count + 1, base: Math.max(acc[point.x].base, point.y) }
-        } else {
-            acc[point.x] = { count: 1, base: point.y };
-        }
-
+        acc[point.x] = true
         return acc
     }, [])
-    return fall
-}
 
-export function performFall(grid, fall, neighbours) {
+    columnsToDrop.forEach((col, colIndex) => {
 
-    let newGrid = [];
+        const column = grid
+            .filter((gridItem, i) => (i % 10 === colIndex) && (itemsToRemove.indexOf(i) === -1))
 
-    for (let i = grid.length - 1; i >= 0; i--) {
-        let gridItem = grid[i];
-        let point = getCoordsFromIndex10(i);
-        const isNeighbour = neighbours.indexOf(i) !== -1
 
-        // check if point belongs to column that needs to fall
-        let f = fall[point.x];
-        if (f && f.base > point.y && !isNeighbour) {
-            let newPoint = { x: point.x, y: point.y + f.count }
-
-            newGrid[getIndexFromCoords10(newPoint)] = gridItem;
-
-            if (point.y < f.count) {
-                newGrid[i] = null
-            }
-        } else if (isNeighbour) {
-            newGrid[i] = null
-
-        } else {
-            newGrid[i] = gridItem
+        for (let y = 9; y >= 0; y--) {
+            newGrid[getIndexFromCoords10({ x: colIndex, y })] = column.pop() || null
         }
-    }
 
-    return newGrid;
+    })
 
+
+    return newGrid
 }
+
+
+

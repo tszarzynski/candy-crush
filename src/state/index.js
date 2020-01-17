@@ -1,4 +1,4 @@
-import { findNeighbours, calcFall, performFall } from '../utils'
+import { findNeighbours, dropItems } from '../utils'
 
 export const Actions = {
     FIND_NEIGHBOURS: 'FindNeighbours'
@@ -26,11 +26,8 @@ export const reducer = (state, action) => {
             if (neighbours.length < 2) {
                 return state
             }
-            console.log(neighbours)
-            const fall = calcFall(state.grid, neighbours);
-            console.log(fall)
 
-            const newGrid = performFall(state.grid, fall, neighbours)
+            const newGrid = dropItems(state.grid, neighbours)
 
             return { ...state, grid: newGrid };
 
