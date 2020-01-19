@@ -1,14 +1,13 @@
 import React from "react";
 import styles from "./GridItem.module.css";
 
-function GridItem({ color, index, onClick }) {
+function GridItem({ color, index, handleClick }) {
   return (
-    <button
-      className={`${styles.btn} ${styles[color] || ""}`}
-      onClick={() => onClick(index)}
-      disabled={color === null}
-    ></button>
+    <li
+      className={`${styles.item} ${styles[color] || ""}`}
+      onClick={() => handleClick(index)}
+    ></li>
   );
 }
 
-export default GridItem;
+export default React.memo(GridItem);

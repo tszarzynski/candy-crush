@@ -1,29 +1,31 @@
-.btn {
+.item {
+  backface-visibility: hidden;
   background: white;
   border: 0;
   display: block;
   height: 0;
-  padding-bottom: 100%;
-  transition: background 0.2s;
-  width: 100%;
-}
-
-.btn:not(:disabled) {
-  cursor: pointer;
+  list-style: none;
+  margin: 0;
+  padding: 0 0 10% 0;
+  width: 10%;
 }
 
 .red {
   background: red;
+  cursor: pointer;
 }
 
 .yellow {
   background: yellow;
+  cursor: pointer;
 }
 
 .blue {
   background: blue;
+  cursor: pointer;
 }
 
 .green {
   background: green;
+  cursor: pointer;
 }

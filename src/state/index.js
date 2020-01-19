@@ -19,7 +19,6 @@ export const initialState = {
 };
 
 export const reducer = (state, action) => {
-  console.log(action);
   switch (action.type) {
     case Actions.FIND_NEIGHBOURS:
       const { index } = action.payload;
@@ -35,12 +34,11 @@ export const reducer = (state, action) => {
       // perform items dropping
       const newGrid = dropItems(state.grid, gridSize, neighbours);
 
-      // check if grid is empty or no more blocks can be removed
-      // rebuild grid if necessary
+      //check if grid is empty or no more blocks can be removed
+      //rebuild grid if necessary
       if (
-        newGrid.filter(gridItem => gridItem != null).length === 0 ||
         newGrid.reduce((acc, gridItem, i) => {
-          if (gridItem === null) return acc;
+          if (gridItem === null || acc > 0) return acc;
           else return acc + findNeighbours(newGrid, gridSize, i).length - 1;
         }, 0) === 0
       )

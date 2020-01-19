@@ -5,12 +5,3 @@
   padding: 0;
   width: 100vh;
 }
-
-.listItem {
-  display: block;
-  height: 0;
-  list-style: none;
-  margin: 0;
-  padding: 0 0 10% 0;
-  width: 10%;
-}
